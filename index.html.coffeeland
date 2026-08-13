@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>COFFEE LAND — Кав'ярня</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #d4d4c5;
+            color: #30352b;
+        }
+
+        /* ===== HEADER ===== */
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(48, 53, 43, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: #e2e1d2;
+            font-size: 25px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        nav a {
+            color: #e2e1d2;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #a8ad8d;
+        }
+
+        /* ===== HERO ===== */
+
+        .hero {
+            min-height: 100vh;
+            background:
+                linear-gradient(
+                    rgba(38, 43, 34, 0.65),
+                    rgba(38, 43, 34, 0.65)
+                ),
+                url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=2000&q=80")
+                center/cover no-repeat;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px 40px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            color: white;
+        }
+
+        .hero-content p:first-child {
+            color: #c2c7a8;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 10vw, 110px);
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+        }
+
+        .hero h2 {
+            font-size: 22px;
+            font-weight: normal;
+            margin-bottom: 35px;
+            color: #e1e1d5;
+        }
+
+        .button {
+            display: inline-block;
+            background: #9ca37c;
+            color: #252a22;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #d4d6bb;
+            transform: translateY(-3px);
+        }
+
+        /* ===== GENERAL ===== */
+
+        section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: #777e5c;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 13px;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            margin-top: 10px;
+            color: #30352b;
+        }
+
+        /* ===== ABOUT ===== */
+
+        .about {
+            background: #e0e0d3;
+        }
+
+        .about-container {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .about-text h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            line-height: 1.8;
+            color: #5b6053;
+            margin-bottom: 18px;
+        }
+
+        /* ===== MENU ===== */
+
+        .menu {
+            background: #c8cabb;
+        }
+
+        .menu-container {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .menu-card {
+            background: #e4e4d8;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid #b5b7a3;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(45, 50, 40, 0.15);
+        }
+
+        .menu-card img {
+            width: 100%;
+            height: 210px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .menu-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .menu-card p {
+            color: #6c7163;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #68704c;
+        }
+
+        /* ===== SPECIAL ===== */
+
+        .special {
+            background:
+                linear-gradient(
+                    rgba(42, 47, 38, 0.8),
+                    rgba(42, 47, 38, 0.8)
+                ),
+                url("https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1800&q=80")
+                center/cover fixed;
+
+            color: white;
+            text-align: center;
+        }
+
+        .special h2 {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .special p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+            color: #dedfd3;
+        }
+
+        /* ===== CONTACTS ===== */
+
+        .contacts {
+            background: #deded1;
+        }
+
+        .contact-container {
+            max-width: 900px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            text-align: center;
+        }
+
+        .contact-card {
+            background: #c9cbb9;
+            padding: 30px 20px;
+            border-radius: 8px;
+        }
+
+        .contact-card .icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .contact-card p {
+            color: #5d6256;
+        }
+
+        /* ===== FOOTER ===== */
+
+        footer {
+            background: #30352b;
+            color: #d7d8ca;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer .footer-logo {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #aeb1a1;
+            font-size: 13px;
+        }
+
+        /* ===== MOBILE ===== */
+
+        @media (max-width: 800px) {
+
+            header {
+                padding: 15px 5%;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            nav a {
+                margin-left: 10px;
+                font-size: 12px;
+            }
+
+            .hero h1 {
+                letter-spacing: 4px;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about-image img {
+                height: 350px;
+            }
+
+            .menu-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 70px 6%;
+            }
+
+            .section-title h2 {
+                font-size: 34px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+        <div class="logo">COFFEE LAND</div>
+
+        <nav>
+            <a href="#about">Про нас</a>
+            <a href="#menu">Меню</a>
+            <a href="#contacts">Контакти</a>
+        </nav>
+    </header>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p>Ласкаво просимо до</p>
+
+            <h1>COFFEE LAND</h1>
+
+            <h2>
+                Місце, де кожна чашка кави має свою історію.
+            </h2>
+
+            <a href="#menu" class="button">
+                Переглянути меню
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+
+        <div class="section-title">
+            <span>Наша історія</span>
+            <h2>Про COFFEE LAND</h2>
+        </div>
+
+        <div class="about-container">
+
+            <div class="about-image">
+
+                <img
+                    src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1000&q=80"
+                    alt="Інтер'єр кав'ярні"
+                >
+
+            </div>
+
+            <div class="about-text">
+
+                <h3>Кава. Атмосфера. Твій момент.</h3>
+
+                <p>
+                    COFFEE LAND — це затишна кав'ярня для тих,
+                    хто цінує якісну каву, приємну атмосферу
+                    та маленькі моменти щастя.
+                </p>
+
+                <p>
+                    Ми обираємо якісні зерна, готуємо каву
+                    з любов'ю та створюємо простір, у якому
+                    хочеться залишитися ще на одну чашку.
+                </p>
+
+                <a href="#contacts" class="button">
+                    Завітати до нас
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MENU -->
+
+    <section class="menu" id="menu">
+
+        <div class="section-title">
+            <span>Наше меню</span>
+            <h2>Улюблені напої</h2>
+        </div>
+
+        <div class="menu-container">
+
+            <!-- COFFEE 1 -->
+
+            <div class="menu-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80"
+                    alt="Еспресо"
+                >
+
+                <h3>Еспресо</h3>
+
+                <p>
+                    Насичений та ароматний класичний еспресо.
+                </p>
+
+                <div class="price">65 ₴</div>
+
+            </div>
+
+
+            <!-- COFFEE 2 -->
+
+            <div class="menu-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=800&q=80"
+                    alt="Капучино"
+                >
+
+                <h3>Капучино</h3>
+
+                <p>
+                    Ніжна молочна пінка та насичений еспресо.
+                </p>
+
+                <div class="price">85 ₴</div>
+
+            </div>
+
+
+            <!-- COFFEE 3 -->
+
+            <div class="menu-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=80"
+                    alt="Лате"
+                >
+
+                <h3>Лате</h3>
+
+                <p>
+                    М'який кавовий смак з великою кількістю молока.
+                </p>
+
+                <div class="price">90 ₴</div>
+
+            </div>
+
+
+            <!-- COFFEE 4 -->
+
+            <div class="menu-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1510707577719-ae7c14805e3a?auto=format&fit=crop&w=800&q=80"
+                    alt="Айс кава"
+                >
+
+                <h3>Ice Coffee</h3>
+
+                <p>
+                    Освіжаюча холодна кава з льодом.
+                </p>
+
+                <div class="price">95 ₴</div>
+
+            </div>
+
+
+            <!-- COFFEE 5 -->
+
+            <div class="menu-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?auto=format&fit=crop&w=800&q=80"
+                    alt="Мокачино"
+                >
+
+                <h3>Мокачино</h3>
+
+                <p>
+                    Кава, молоко та ніжний шоколадний смак.
+                </p>
+
+                <div class="price">100 ₴</div>
+
+            </div>
+
+
+            <!-- DESSERT -->
+
+            <div class="menu-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=80"
+                    alt="Десерт"
+                >
+
+                <h3>Десерт дня</h3>
+
+                <p>
+                    Щось солоденьке до твоєї улюбленої кави.
+                </p>
+
+                <div class="price">110 ₴</div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SPECIAL -->
+
+    <section class="special">
+
+        <h2>Твоя кава чекає на тебе ☕</h2>
+
+        <p>
+            Затишний простір, аромат свіжозвареної кави
+            та атмосфера, у яку хочеться повертатися.
+        </p>
+
+        <a href="#contacts" class="button">
+            Знайти нас
+        </a>
+
+    </section>
+
+
+    <!-- CONTACTS -->
+
+    <section class="contacts" id="contacts">
+
+        <div class="section-title">
+
+            <span>Будемо раді бачити</span>
+
+            <h2>Контакти</h2>
+
+        </div>
+
+
+        <div class="contact-container">
+
+            <div class="contact-card">
+
+                <div class="icon">📍</div>
+
+                <h3>Адреса</h3>
+
+                <p>
+                    вул. Кавова, 15<br>
+                    Ваше місто
+                </p>
+
+            </div>
+
+
+            <div class="contact-card">
+
+                <div class="icon">🕐</div>
+
+                <h3>Графік</h3>
+
+                <p>
+                    Пн–Пт: 08:00–21:00<br>
+                    Сб–Нд: 09:00–22:00
+                </p>
+
+            </div>
+
+
+            <div class="contact-card">
+
+                <div class="icon">📞</div>
+
+                <h3>Телефон</h3>
+
+                <p>
+                    +380 00 000 00 00
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-logo">
+            COFFEE LAND
+        </div>
+
+        <p>
+            © 2026 COFFEE LAND. Кава, яку хочеться пити.
+        </p>
+
+    </footer>
+
+</body>
+</html>
